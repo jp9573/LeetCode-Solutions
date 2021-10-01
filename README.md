@@ -12,6 +12,6 @@ Make sure you are registered at [Hacktoberfest 2021](https://hacktoberfest.digit
 3. Create a file with the name of the problem, Commit, Push
 4. Finally raise a PR! ([How to create a PR?](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork))
 
-P.S. Star the repo if you like it.
+P.S. Star the repo if you like it. ⭐
 
 Happy Coding :smiley:
