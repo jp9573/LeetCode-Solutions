@@ -1,24 +1,29 @@
+//problem link https://leetcode.com/problems/trapping-rain-water/
+// Difficulty level : hard
+// most optimised O(N) time and O(1) space
 class Solution {
 public:
-    int trap(vector<int>& height) {
-    int  n = height.size();
-        if (n ==0)
-            return 0;
-        int i;
-        int left[n];
-            int right[n];
-        left[0]=height[0];
-        right[n-1]=height[n-1];
-        for(i=1;i<n;i++){
-            left[i]= max(left[i-1],height[i]);
+    int trap(vector<int>& arr) {
+        int l=0,r=arr.size()-1;
+        int leftmax=0,rightmax=0,ans=0;
+        while(l<=r){
+            if(arr[l]<=arr[r]){
+                if(arr[l]>=leftmax){
+                    leftmax=arr[l];
+                }
+                else ans+=leftmax-arr[l];
+                
+                l++;
+            }
+            else{
+                if(arr[r]>=rightmax){
+                    rightmax=arr[r];
+                }
+                else ans+=rightmax-arr[r];
+                
+                r--;
+            }
         }
-        for(i=n-2;i>=0;i--){
-            right[i] = max(right[i+1],height[i]);
-        }
-        int res=0;
-        for(i=0;i<n-1;i++){
-            res+= min(left[i],right[i])- height[i];
-        }
-        return res;
+        return ans;
     }
 };
