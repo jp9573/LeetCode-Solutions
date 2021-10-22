@@ -1,0 +1,43 @@
+class Solution {
+public:
+    vector<int> fairCandySwap(vector<int>& aliceSizes, vector<int>& bobSizes) {
+        int sumalice=0,sumbob=0;
+        sort(bobSizes.begin(),bobSizes.end());
+        for(int i=0;i<aliceSizes.size();i++){
+            sumalice+=aliceSizes[i];
+        }
+        for(int i=0;i<bobSizes.size();i++){
+            sumbob+=bobSizes[i];
+        }
+        
+        int result=(sumbob-sumalice)/2;
+        vector<int> v;
+        int ans=0;
+        //we will check for every element of alicesizes 
+        for(int i=0;i<aliceSizes.size();i++)
+        {
+             ans=aliceSizes[i]+result;
+            int low=0,high=bobSizes.size()-1;
+            
+            while(low<=high)
+            {
+                int mid = (low+high)/2;
+                if(bobSizes[mid] == ans){
+                    v.push_back(aliceSizes[i]);
+                    v.push_back(ans);
+                    break;
+                }
+                else if(bobSizes[mid]<ans){
+                    low = mid+1;
+                }
+                else{
+                    high = mid-1;
+                }
+            }
+            if(v.size() != 0){
+                break;
+                }
+        }
+        return v;
+        }   
+};
