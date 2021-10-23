@@ -1,0 +1,13 @@
+class Solution:
+	def canJump(self, nums: List[int]) -> bool:
+		if (len(nums) == 1):
+			return True
+		flag = True
+		for i in range(len(nums) -2, -1, -1):
+			if (flag and not nums[i]):      # we do not process any newly found 0's until proving the previous 0 can be skipped
+				flag = False                # if an 0 is found, set the flag to F until it is proved to be skippable
+				ind = i                     # mark the idx of the 0
+			if (not flag and nums[i] > ind - i):
+				flag = True                 # 0 can be skipped, set flag to T
+
+		return flag 
